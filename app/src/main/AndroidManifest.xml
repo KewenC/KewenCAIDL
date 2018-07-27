@@ -19,9 +19,8 @@
 
         <service
             android:name=".AIDLService"
-            android:enabled="false"
             android:exported="false"
-            android:process=":remote"></service>
+            android:process=":remote"/>
     </application>
 
 </manifest>

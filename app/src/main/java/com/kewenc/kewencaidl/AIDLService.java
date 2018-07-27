@@ -11,6 +11,12 @@ import com.kewenc.kewencaidl.service.AIDLInterface;
 public class AIDLService extends Service {
     public AIDLService() {
     }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
     String data = "";
     private Binder binder = new AIDLInterface.Stub(){
 

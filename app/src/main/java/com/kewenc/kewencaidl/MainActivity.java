@@ -13,20 +13,10 @@ import com.kewenc.kewencaidl.service.AIDLInterface;
 
 public class MainActivity extends AppCompatActivity {
     private AIDLInterface aidlInterface;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Log.e("TAGF","onCreate");
-        Intent intent = new Intent(this, AIDLService.class);
-        startService(intent);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        bindService(intent,serviceConnection,BIND_AUTO_CREATE);
-    }
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
             aidlInterface = AIDLInterface.Stub.asInterface(iBinder);
-            Log.e("TAGF","onServiceConnected");
             try {
                 aidlInterface.setData("Hello AIDL");
             } catch (RemoteException e) {
@@ -44,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = new Intent(this, AIDLService.class);
+        startService(intent);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        bindService(intent,serviceConnection,BIND_AUTO_CREATE);
+    }
+
 
     @Override
     protected void onDestroy() {
