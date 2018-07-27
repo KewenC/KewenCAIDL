@@ -20,7 +20,11 @@
         <service
             android:name=".AIDLService"
             android:exported="false"
-            android:process=":remote"/>
+            android:process=":remote" />
+        <service
+            android:name=".PushService"
+            android:exported="false"
+            android:process=":push"/>
     </application>
 
 </manifest>

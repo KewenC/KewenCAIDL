@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent2 = new Intent(this, PushService.class);
+        startService(intent2);
         Intent intent = new Intent(this, AIDLService.class);
         startService(intent);
         super.onCreate(savedInstanceState);
